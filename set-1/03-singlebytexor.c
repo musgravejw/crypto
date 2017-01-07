@@ -8,11 +8,20 @@ int scoring(char* str) {
 
   for (int i = 0; i < strlen(str); i++) {
     char c = str[i];
-    if (c >= 65 && c <= 122) {
+    if (c >= 91 && c <= 96) {
+      result -= 2;
+    } else if (c == 32) {
+      result += 1;
+    } else if (c >= 65 && c <= 122) {
       if (c >= 97) c -= 32;
 
       c -= 65;
+
+      if (c >= 26) c = 26;
+
       result += map[c];
+    } else {
+      result -= 2;
     }
   }
 
